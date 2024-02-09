@@ -1,1 +1,29 @@
 foo = df.loc[df['NAME']=='RUZYNE','TMAX'].corr(df.loc[df['NAME']=='TURANY','TMAX'])
+
+__________________________________________
+
+# Načtení dat s použitím středníku jako oddělovače
+from matplotlib import pyplot as plt
+
+# Stazeni .csv souboru publikovaneho na github.com
+url = "https://raw.githubusercontent.com/petrrozkosny/pydata/main/pydata_data.csv"
+df = pd.read_csv(url,delimiter = ';')
+df['DATE']  = pd.to_datetime(df['DATE'])
+# Skupina podle data a jména, a sečtení srážek
+
+df_yearly = df.groupby([df['DATE'].dt.year, 'NAME'])[['TMIN','TMAX']].sum().reset_index()
+
+
+df_yearly = df_yearly.loc[df_yearly['NAME'].isin(['RUZYNE','TURANY'])]
+
+
+ax = df_yearly.plot(kind='line', x='DATE', y='TMIN', color='blue', title="PRCP and TMAX over Time")
+df_yearly.plot(kind='line', x='DATE', y='TMAX', color='red', secondary_y=True, ax=ax)
+
+ax.set_ylabel('TMIN')
+ax.right_ax.set_ylabel('TMAX')
+
+# # Zobrazení grafu
+plt.show()
+
+
