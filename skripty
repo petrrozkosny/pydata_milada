@@ -1,0 +1,1 @@
+foo = df.loc[df['NAME']=='RUZYNE','TMAX'].corr(df.loc[df['NAME']=='TURANY','TMAX'])
