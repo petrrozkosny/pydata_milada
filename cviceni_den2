@@ -1,0 +1,16 @@
+
+1. Z dat na github vytvořte dataframe df
+2. Sloupec DATE převeďte na datum
+3. Dopočítejte sloupce:
+	- ROK
+	- MESIC
+
+4. Zafiltrujte df tak, aby obsahoval pouze hodnoty pro NAME = MOSNOV a ROK = 2010
+5. Omezte df na sloupce MESIC, PRCP
+6. Odstraňte NaN hodnoty ze sloupce PRCP
+
+7. Dopočtěte nový sloupec "TYP_POCASI", kdy:
+	- pokud PRCP = 0 tak "neprselo
+	- pokud PRCP > 0 tak "prselo
+8. Agregujte dataframe dle sloupce TYP_POCASI a zjistete počet "neprselo" a počet "prselo"
+
